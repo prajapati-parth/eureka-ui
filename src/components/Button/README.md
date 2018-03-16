@@ -1,5 +1,5 @@
 Button example:
 
 ```jsx
-<Button />
+<Button text='Click' />
 ```
