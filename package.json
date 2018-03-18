@@ -4,9 +4,9 @@
   "description": "",
   "main": "./src/index.js",
   "scripts": {
-    "start": "styleguidist server --config ./config/styleguide.config.js",
-    "build": "webpack --config ./webpack/webpack.umd.config.js",
-    "docs:build": "styleguidist build --config ./config/styleguide.config.js"
+    "start": "styleguidist server --config ./config/react-styleguidist/styleguide.config.js",
+    "build": "webpack --config ./config/webpack/webpack.umd.config.js",
+    "docs:build": "styleguidist build --config ./config/react-styleguidist/styleguide.config.js"
   },
   "author": "Parth Prajapati",
   "license": "ISC",
@@ -20,7 +20,10 @@
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
     "react-styleguidist": "^6.2.7",
+    "style-loader": "^0.20.3",
     "webpack": "^3.10.0"
   }
 }

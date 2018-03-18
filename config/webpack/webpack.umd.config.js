@@ -4,7 +4,7 @@ var webpack = require('webpack');
 module.exports = {
   entry: './src/index.js',
   output: {
-    path: path.resolve(__dirname, '../output'),
+    path: path.resolve(__dirname, '../../output'),
     filename: 'bundle.min.js',
     libraryTarget: 'umd',
     library: 'eureka',
@@ -22,6 +22,14 @@ module.exports = {
             presets: ['env']
           }
         }
+      },
+      {
+        test: /(\.less|\.css)$/,
+        use: ['style-loader', 'css-loader']
+      },
+      { 
+        test: /\.(ttf|otf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader: 'file-loader?name=fonts/[name].[ext]'
       }
     ]
   },
