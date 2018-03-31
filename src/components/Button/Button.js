@@ -10,7 +10,7 @@ const propTypes = {
 
 class Button extends React.Component {
   render() {
-    return <button>{this.props.text}</button>
+    return <button className='eui-button'>{this.props.text}</button>
   }
 }
 
