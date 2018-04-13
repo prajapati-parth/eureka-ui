@@ -6,15 +6,15 @@
   "scripts": {
     "start": "styleguidist server --config ./config/react-styleguidist/styleguide.config.js",
     "build": "webpack --config ./config/webpack/webpack.umd.config.js",
-    "docs:build": "styleguidist build --config ./config/react-styleguidist/styleguide.config.js && npm run copy:css",
-    "copy:css": "cp ./src/styles/eurekaui.css ./docs/eurekaui.css"
+    "docs:build": "styleguidist build --config ./config/react-styleguidist/styleguide.config.js"
   },
   "author": "Parth Prajapati",
   "license": "ISC",
   "dependencies": {
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "styled-components": "^3.2.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
