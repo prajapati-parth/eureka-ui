@@ -3,7 +3,9 @@ const Button = require('../Button').default;
 
 class DefaultButton extends React.Component {
   render() {
-    return (<Button text='Read more' click={this.handleClick} />);
+    return (
+      <Button text='Read more' click={this.handleClick} />
+    );
   }
 
   handleClick() {

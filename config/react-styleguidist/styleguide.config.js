@@ -8,7 +8,7 @@ module.exports = {
   webpackConfig: require('../webpack/webpack.config.js'),
   sections: [
     {
-      name: 'Buttons',
+      name: 'Button',
       sections: [
         {
           name: 'Default button',
@@ -17,6 +17,19 @@ module.exports = {
         {
           name: 'Gradient button',
           content: '../../src/components/Button/examples/gradient-buttons.md'
+        }
+      ]
+    },
+    {
+      name: 'Card',
+      sections: [
+        {
+          name: 'Default card',
+          content: '../../src/components/Card/examples/default-card.md'
+        },
+        {
+          name: 'Card with Header',
+          content: '../../src/components/Card/examples/card-header.md'
         }
       ]
     }

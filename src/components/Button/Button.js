@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeProvider } from "styled-components";
+import styled, { ThemeProvider } from 'styled-components';
 
 import commonTheme from '../../theme/eurekaui-theme';
 
@@ -16,8 +16,8 @@ const propTypes = {
   /**
    * Click event handler
    */
-  click: PropTypes.func
-}
+  click: PropTypes.func.isRequired
+};
 
 const SButton = styled.button`
   display: inline-block;
@@ -34,10 +34,10 @@ const SButton = styled.button`
   background-image: ${props => {
     switch(props.themeColor) {
       case 'blueGradient':
-        return 'linear-gradient(135deg, #667eea, #764ba2)';
+        return `linear-gradient(135deg, ${props.theme.colors.blueGradientStart}, ${props.theme.colors.blueGradientEnd})`;
         break;
       case 'greenGradient':
-        return 'linear-gradient(135deg,#90f7ec,#3bb2b8)';
+        return `linear-gradient(135deg, ${props.theme.colors.greenGradientStart}, ${props.theme.colors.greenGradientEnd})`;
         break;
       default:
         return `linear-gradient(135deg, ${props.theme.colors.themeDefault}, ${props.theme.colors.themeDefault})`;
@@ -45,7 +45,7 @@ const SButton = styled.button`
   }};
   color: ${props => props.theme.colors.themeWhiteBase};
   border-radius: ${props => props.theme.button.borderRadius};
-  font-size: 16px;
+  font-size: 18px;
   font-family: inherit;
 
   &:focus,
@@ -73,7 +73,7 @@ class Button extends React.Component {
 
     return (
       <ThemeProvider theme={commonTheme}>
-        <SButton onClick={click} themeColor={theme}>{this.props.text}</SButton>
+        <SButton onClick={click} themeColor={theme}>{text}</SButton>
       </ThemeProvider>
     )
   }
@@ -81,4 +81,4 @@ class Button extends React.Component {
 
 Button.propTypes = propTypes;
 
-export default Button
+export default Button;
