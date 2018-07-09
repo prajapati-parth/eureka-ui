@@ -63,10 +63,5 @@ module.exports = {
 			commonjs: ['react-dom'],
 			amd: 'react-dom',
 		}
-  }],
-  
-  resolve: {
-    extensions: ['.js'],
-    modules: [path.resolve(__dirname, 'src')],
-  }
+  }]
 }

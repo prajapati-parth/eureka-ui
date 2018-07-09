@@ -1,11 +1,11 @@
 {
   "name": "eureka-ui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
-  "main": "./src/index.js",
+  "main": "./output/bundle.min.js",
   "scripts": {
     "start": "styleguidist server --config ./config/react-styleguidist/styleguide.config.js",
-    "build": "webpack --config ./config/webpack/webpack.umd.config.js",
+    "build": "webpack --config ./config/webpack/webpack.config.js",
     "docs:build": "styleguidist build --config ./config/react-styleguidist/styleguide.config.js"
   },
   "author": "Parth Prajapati",
