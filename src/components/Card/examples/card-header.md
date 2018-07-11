@@ -8,7 +8,7 @@ class CardHeader extends React.Component {
     return (
       <div>
         <Card title='Header title' body={bodyText} theme='blueGradient' click={this.handleCardClick} />
-        <Card title='Header title' body={bodyText} theme='greenGradient' click={this.handleCardClick} />
+        <Card title='Header title' body={bodyText} theme='greenGradient' click={this.handleCardClick} categories={['react', 'react-dom']} />
       </div>
     )
   }

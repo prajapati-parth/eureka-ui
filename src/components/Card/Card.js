@@ -21,11 +21,16 @@ const propTypes = {
   /**
    * Action to be performed on card click.
    */
-  click: PropTypes.func
+  click: PropTypes.func,
+  /**
+   * Categories to be displayed under title.
+   */
+  categories: PropTypes.arrayOf(PropTypes.string)
 };
 
 const defaultProps = {
-  borderNone: PropTypes.bool
+  borderNone: true,
+  categories: []
 };
 
 const SCard = styled.div`
@@ -39,10 +44,8 @@ const SCard = styled.div`
     switch(props.themeColor) {
       case 'blueGradient':
         return `8px solid ${props.theme.colors.blueGradientStart}`;
-        break;
       case 'greenGradient':
         return `8px solid ${props.theme.colors.greenGradientStart}`;
-        break;
     }
   }};
 
@@ -77,14 +80,36 @@ const SCardFooter = styled.div`
   margin: 10px 0;
 `;
 
+const SCardCategory = styled.span`
+  display: inline-block;
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  color: #FFFFFF;
+  border-radius: 0.25rem;
+  text-align: center;
+  font-weight: bold;
+  margin-right: 3px;
+  background-color: ${props => {
+    switch(props.themeColor) {
+      case 'blueGradient':
+        return `${props.theme.colors.blueGradientEnd}`;
+      case 'greenGradient':
+        return `${props.theme.colors.greenGradientEnd}`;
+    }
+  }};
+`;
+
 class Card extends React.Component {
   render() {
-    const { title, body, click, theme, borderNone } = this.props;
+    const { title, body, click, theme, borderNone, categories } = this.props;
 
     return (
       <ThemeProvider theme={commonTheme}>
         <SCard themeColor={theme} onClick={click} borderNone={borderNone}>
           <SCardTitle>{title}</SCardTitle>
+          {
+            categories.map((category, idx) => <SCardCategory themeColor={theme} key={idx}>{category}</SCardCategory>)
+          }
           <SCardBody>{body}</SCardBody>
           <SCardFooter>
             <Button text='Read more' theme={theme} click={click}  />
