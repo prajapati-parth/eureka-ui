@@ -23,9 +23,13 @@ const propTypes = {
    */
   click: PropTypes.func,
   /**
-   * Categories to be displayed under title.
+   * Categories to be displayed.
    */
-  categories: PropTypes.arrayOf(PropTypes.string)
+  categories: PropTypes.arrayOf(PropTypes.string),
+  /**
+   * Date to be displayed
+   */
+  timeStamp: PropTypes.string
 };
 
 const defaultProps = {
@@ -99,9 +103,14 @@ const SCardCategory = styled.span`
   }};
 `;
 
+const SCardTimestamp = styled.div`
+  margin: 10px 0 5px 0;
+  color: #BFBFBF; 
+`;
+
 class Card extends React.Component {
   render() {
-    const { title, body, click, theme, borderNone, categories } = this.props;
+    const { title, body, click, theme, borderNone, categories, timeStamp } = this.props;
 
     return (
       <ThemeProvider theme={commonTheme}>
@@ -110,6 +119,7 @@ class Card extends React.Component {
           {
             categories.map((category, idx) => <SCardCategory themeColor={theme} key={idx}>{category}</SCardCategory>)
           }
+          <SCardTimestamp>{ timeStamp }</SCardTimestamp>
           <SCardBody>{body}</SCardBody>
           <SCardFooter>
             <Button text='Read more' theme={theme} click={click}  />
