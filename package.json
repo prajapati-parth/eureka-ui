@@ -6,7 +6,9 @@
   "scripts": {
     "start": "styleguidist server --config ./config/react-styleguidist/styleguide.config.js",
     "build": "webpack --config ./config/webpack/webpack.config.js",
-    "docs:build": "styleguidist build --config ./config/react-styleguidist/styleguide.config.js"
+    "docs:build": "styleguidist build --config ./config/react-styleguidist/styleguide.config.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook -o docs"
   },
   "author": "Parth Prajapati",
   "license": "ISC",
@@ -17,13 +19,17 @@
     "styled-components": "^3.2.5"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.8",
+    "@storybook/addon-links": "^3.4.8",
+    "@storybook/addons": "^3.4.8",
+    "@storybook/react": "^3.4.8",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "babel-runtime": "^6.26.0",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
-    "react-styleguidist": "^6.2.7",
     "style-loader": "^0.20.3",
     "webpack": "^3.10.0"
   }
