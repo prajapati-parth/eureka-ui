@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider, css } from 'styled-components';
 
 import commonTheme from '../../theme/eurekaui-theme';
 import Button from '../Button';
@@ -53,11 +53,11 @@ const SCard = styled.div`
     }
   }};
 
-
+  ${props => props.onClick && css`
   &:hover {
     cursor: pointer;
     box-shadow: 0 4px 6px 0px hsla(0, 0%, 0%, 0.2);
-  }
+  }`}
 `;
 
 const SCardTitle = styled.div`
@@ -110,7 +110,8 @@ const SCardTimestamp = styled.div`
 
 class Card extends React.Component {
   render() {
-    const { title, body, click, theme, borderNone, categories, timeStamp } = this.props;
+    const { title, children, click, theme, borderNone, categories, timeStamp,
+      showButton, buttonText } = this.props;
 
     return (
       <ThemeProvider theme={commonTheme}>
@@ -120,10 +121,10 @@ class Card extends React.Component {
             categories.map((category, idx) => <SCardCategory themeColor={theme} key={idx}>{category}</SCardCategory>)
           }
           <SCardTimestamp>{ timeStamp }</SCardTimestamp>
-          <SCardBody>{body}</SCardBody>
-          <SCardFooter>
-            <Button text='Read more' theme={theme} click={click}  />
-          </SCardFooter>
+          <SCardBody>{children}</SCardBody>
+          {
+            showButton && (<SCardFooter><Button text={buttonText} theme={theme} click={click} /></SCardFooter>)
+          }
         </SCard>
       </ThemeProvider>
     )

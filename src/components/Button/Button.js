@@ -73,7 +73,7 @@ class Button extends React.Component {
 
     return (
       <ThemeProvider theme={commonTheme}>
-        <SButton onClick={click} themeColor={theme}>{text}</SButton>
+        <SButton onClick={(e) => {click(e); e.stopPropagation(); }} themeColor={theme}>{text}</SButton>
       </ThemeProvider>
     )
   }
