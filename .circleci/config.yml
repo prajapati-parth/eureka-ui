@@ -1,7 +1,7 @@
 version: 2
 jobs:
-  build:
-    working_directory: ~/repo
+  install-and-test:
+    working_directory: ~/circleci-workflows
     docker:
       - image: circleci/node:8.9.4
     steps:
@@ -11,13 +11,20 @@ jobs:
           command: 'sudo npm install -g npm@latest'
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: install-npm
-          command: npm install
+      - run: npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+      - run:
+          name: test
+          command: npm test
+
+  release:
+    working_directory: ~/circleci-workflows
+    docker:
+      - image: circleci/node:8.9.4
+    steps:
       - add_ssh_keys:
           fingerprints:
             - "65:c0:54:f1:fd:a4:da:32:d6:79:9b:1f:2e:f3:1d:e7"
@@ -27,3 +34,38 @@ jobs:
             PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
             git tag $PACKAGE_VERSION
             git push origin $PACKAGE_VERSION
+  
+  build-and-push:
+    working_directory: ~/circleci-workflows
+    docker:
+      - image: circleci/node:8.9.4
+    steps:
+      - run: npm install
+      - run: npm run build
+      - add_ssh_keys:
+          fingerprints:
+            - "65:c0:54:f1:fd:a4:da:32:d6:79:9b:1f:2e:f3:1d:e7"
+      - run:
+            name: push-bundle-to-github
+            command: |
+              git add output
+              git commit -m "build the bundle"
+              git push origin master
+
+workflows:
+  version: 2
+  test-release-build:
+    jobs:
+       - install-and-test
+       - release:
+            requires:
+                - install-and-test
+            filters:
+                branches:
+                    only: master
+       - build-and-push:
+            requires:
+                - install-and-test
+            filters:
+                branches:
+                    only: master
