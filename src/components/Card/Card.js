@@ -103,8 +103,8 @@ const SCardCategory = styled.span`
   }};
 `;
 
-const SCardTimestamp = styled.div`
-  margin: 10px 0 5px 0;
+const SCardTimestamp = styled.span`
+  margin: 10px 10px 5px 0;
   color: #BFBFBF; 
 `;
 
@@ -117,10 +117,10 @@ class Card extends React.Component {
       <ThemeProvider theme={commonTheme}>
         <SCard themeColor={theme} onClick={click} borderNone={borderNone}>
           <SCardTitle>{title}</SCardTitle>
+          <SCardTimestamp>{ timeStamp }</SCardTimestamp>
           {
             categories.map((category, idx) => <SCardCategory themeColor={theme} key={idx}>{category}</SCardCategory>)
           }
-          <SCardTimestamp>{ timeStamp }</SCardTimestamp>
           <SCardBody>{children}</SCardBody>
           {
             showButton && (<SCardFooter><Button text={buttonText} theme={theme} click={click} /></SCardFooter>)

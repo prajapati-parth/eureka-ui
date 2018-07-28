@@ -18,3 +18,9 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - ./node_modules
+      - run:
+          name: release-version
+          command: |
+            PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
+            git tag $PACKAGE_VERSION
+            git push origin $PACKAGE_VERSION
