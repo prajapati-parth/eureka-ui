@@ -21,6 +21,8 @@ jobs:
 
   test:
     working_directory: ~/repo
+    docker:
+      - image: circleci/node:8.9.4
     steps:
       - run:
           name: test
@@ -28,6 +30,8 @@ jobs:
 
   release:
     working_directory: ~/repo
+    docker:
+      - image: circleci/node:8.9.4
     steps:
       - add_ssh_keys:
           fingerprints:
