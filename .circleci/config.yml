@@ -44,10 +44,10 @@ workflows:
   install-test-and-release:
     jobs:
        - install
-       - test
+       - test:
             requires:
                 - install
-       - release
+       - release:
             requires:
                 - test
             filters:
