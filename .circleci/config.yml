@@ -1,7 +1,7 @@
 version: 2
 jobs:
   install:
-    working_directory: ~/repo
+    working_directory: ~/circleci-workflows
     docker:
       - image: circleci/node:8.9.4
     steps:
@@ -20,7 +20,7 @@ jobs:
             - ./node_modules
 
   test:
-    working_directory: ~/repo
+    working_directory: ~/circleci-workflows
     docker:
       - image: circleci/node:8.9.4
     steps:
@@ -29,7 +29,7 @@ jobs:
           command: npm test
 
   release:
-    working_directory: ~/repo
+    working_directory: ~/circleci-workflows
     docker:
       - image: circleci/node:8.9.4
     steps:
