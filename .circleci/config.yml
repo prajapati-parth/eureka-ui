@@ -51,6 +51,8 @@ jobs:
             name: push-bundle-to-github
             command: |
               git add output
+              git config --global user.email "parth17prajapati@gmail.com"
+              git config --global user.name "Parth Prajapati"
               git commit -m "build the bundle"
               git push origin master
 
