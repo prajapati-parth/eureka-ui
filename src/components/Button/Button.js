@@ -68,12 +68,17 @@ const SButton = styled.button`
 `;
 
 class Button extends React.Component {
+  buttonClick(event) {
+    this.props.click(event);
+    event.stopPropagation();
+  }
+
   render() {
-    const { text, click, theme } = this.props;
+    const { text, theme } = this.props;
 
     return (
       <ThemeProvider theme={commonTheme}>
-        <SButton onClick={(e) => {click(e); e.stopPropagation(); }} themeColor={theme}>{text}</SButton>
+        <SButton onClick={(event) => this.buttonClick(event)} themeColor={theme}>{text}</SButton>
       </ThemeProvider>
     )
   }

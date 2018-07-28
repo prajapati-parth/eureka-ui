@@ -6,7 +6,8 @@
   "scripts": {
     "start": "start-storybook -p 6006",
     "build": "webpack --config ./config/webpack/webpack.config.js",
-    "build-storybook": "build-storybook -o docs"
+    "build-storybook": "build-storybook -o docs",
+    "test": "jest"
   },
   "author": "Parth Prajapati",
   "license": "ISC",
@@ -27,7 +28,10 @@
     "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "css-loader": "^0.28.11",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "file-loader": "^1.1.11",
+    "jest": "^23.4.2",
     "style-loader": "^0.20.3",
     "webpack": "^3.10.0"
   }
