@@ -38,4 +38,9 @@ storiesOf('Card', module)
   ))
   .add('Card with badges and timestamp', () =>
     <Card title='Card has badges and timestamp' theme='blueGradient' categories={['Card', 'Button']} timeStamp='25 July, 2018'>{bodyText}</Card>
-  );
+  )
+  .add('Card with image', () => (
+    <Card title='Card with body component' img='https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Maltese_puppy.jpeg/440px-Maltese_puppy.jpeg'>
+      <CardBody />
+    </Card>
+  ));

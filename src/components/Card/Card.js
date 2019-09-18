@@ -29,7 +29,11 @@ const propTypes = {
   /**
    * Date to be displayed
    */
-  timeStamp: PropTypes.string
+  timeStamp: PropTypes.string,
+  /**
+   * Card image
+   */
+  img: PropTypes.string
 };
 
 const defaultProps = {
@@ -39,7 +43,6 @@ const defaultProps = {
 
 const SCard = styled.div`
   background-color: ${props => props.theme.colors.themeWhiteBase};
-  padding: 15px 25px;
   border-radius: 5px;
   transition: all .5s;
   margin: 12px 0;
@@ -108,25 +111,41 @@ const SCardTimestamp = styled.span`
   color: #BFBFBF; 
 `;
 
+const SCardImg = styled.img`
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 300px;
+  width: 100%;
+`;
+
+const SCardPadder = styled.div`
+  padding: 15px 25px;
+`;
+
 class Card extends React.Component {
   render() {
     const { title, children, click, theme, borderNone, categories, timeStamp,
-      showButton, buttonText } = this.props;
+      showButton, buttonText, img } = this.props;
 
     return (
       <ThemeProvider theme={commonTheme}>
         <SCard themeColor={theme} onClick={click} borderNone={borderNone}>
-          <SCardTitle>{title}</SCardTitle>
           {
-            timeStamp && <SCardTimestamp>{ timeStamp }</SCardTimestamp>
+            img && <SCardImg src={img} />
           }
-          {
-            categories.map((category, idx) => <SCardCategory themeColor={theme} key={idx}>{category}</SCardCategory>)
-          }
-          <SCardBody>{children}</SCardBody>
-          {
-            showButton && (<SCardFooter><Button text={buttonText} theme={theme} click={click} /></SCardFooter>)
-          }
+          <SCardPadder>
+            <SCardTitle>{title}</SCardTitle>
+            {
+              timeStamp && <SCardTimestamp>{ timeStamp }</SCardTimestamp>
+            }
+            {
+              categories.map((category, idx) => <SCardCategory themeColor={theme} key={idx}>{category}</SCardCategory>)
+            }
+            <SCardBody>{children}</SCardBody>
+            {
+              showButton && (<SCardFooter><Button text={buttonText} theme={theme} click={click} /></SCardFooter>)
+            }
+          </SCardPadder>
         </SCard>
       </ThemeProvider>
     )
