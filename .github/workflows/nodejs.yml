@@ -41,6 +41,8 @@ jobs:
     - name: release version
       run: |
         PACKAGE_VERSION=$(node -p -e "require('./package.json').version")
+        git config --global user.name 'Parth Prajapati'
+        git config --global user.email 'parth17prajapati@gmail.com'
         git tag $PACKAGE_VERSION
         git push origin $PACKAGE_VERSION
       env:
