@@ -27,7 +27,7 @@ const SButton = styled.button`
   touch-action: manipulation;
   cursor: pointer;
   background-image: none;
-  border: 1px solid transparent;
+  border: none;
   white-space: nowrap;
   margin: 0 2px;
   padding: ${props => `${props.theme.button.paddingBaseVertical} ${props.theme.button.paddingBaseHorizontal}` };
