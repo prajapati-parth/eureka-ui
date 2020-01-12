@@ -14,9 +14,33 @@ const ThemedCard = () => {
       <Card title='Header title' theme='blueGradient'>{bodyText}</Card>
       <br />
       <Card title='Header title' theme='greenGradient'>{bodyText}</Card>
+      <br />
+      <Card title='Header title' theme='pinkGradient'>{bodyText}</Card>
     </div>
   )
 };
+
+const ClickableThemedCard = () => {
+  return (
+    <div>
+      <Card title='Card title' click={action('clicked')} theme='blueGradient' buttonText='Read more' showButton>{bodyText}</Card>
+      <br />
+      <Card title='Card title' click={action('clicked')} theme='pinkGradient' buttonText='Read more' showButton>{bodyText}</Card>
+    </div>
+  )
+}
+
+const BadgesAndTimestampCard = () => {
+  return (
+    <div>
+      <Card title='Card has badges and timestamp' theme='blueGradient' categories={['Card', 'Button']} timeStamp='25 July, 2018'>{bodyText}</Card>
+      <br />
+      <Card title='Card has badges and timestamp' theme='greenGradient' categories={['Card', 'Button']} timeStamp='25 July, 2018'>{bodyText}</Card>
+      <br />
+      <Card title='Card has badges and timestamp' theme='pinkGradient' categories={['Card', 'Button']} timeStamp='25 July, 2018'>{bodyText}</Card>
+    </div>
+  )
+}
 
 const CardBody = () => {
   return <Button text='Card body' click={action('clicked')} />
@@ -28,17 +52,13 @@ storiesOf('Card', module)
   .add('Clickable default card with button', () =>
     <Card title='Card title' click={action('clicked')} buttonText='Read more' showButton>{bodyText}</Card>
   )
-  .add('Clickable card with themed button', () =>
-    <Card title='Card title' click={action('clicked')} theme='blueGradient' buttonText='Read more' showButton>{bodyText}</Card>
-  )
+  .add('Clickable card with themed button', () => <ClickableThemedCard />)
   .add('Card with component body', () => (
     <Card title='Card with body component'>
       <CardBody />
     </Card>
   ))
-  .add('Card with badges and timestamp', () =>
-    <Card title='Card has badges and timestamp' theme='blueGradient' categories={['Card', 'Button']} timeStamp='25 July, 2018'>{bodyText}</Card>
-  )
+  .add('Card with badges and timestamp', () => <BadgesAndTimestampCard />)
   .add('Card with image', () => (
     <Card title='Card with body component' img='https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Maltese_puppy.jpeg/440px-Maltese_puppy.jpeg'>
       <CardBody />

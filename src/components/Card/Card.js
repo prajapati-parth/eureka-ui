@@ -53,6 +53,8 @@ const SCard = styled.div`
         return `8px solid ${props.theme.colors.blueGradientStart}`;
       case 'greenGradient':
         return `8px solid ${props.theme.colors.greenGradientStart}`;
+      case 'pinkGradient':
+        return `8px solid ${props.theme.colors.pinkGradientStart}`;
     }
   }};
 
@@ -102,6 +104,8 @@ const SCardCategory = styled.span`
         return `${props.theme.colors.blueGradientEnd}`;
       case 'greenGradient':
         return `${props.theme.colors.greenGradientEnd}`;
+      case 'pinkGradient':
+        return `${props.theme.colors.pinkGradientStart}`;
     }
   }};
 `;

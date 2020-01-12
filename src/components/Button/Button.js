@@ -39,6 +39,9 @@ const SButton = styled.button`
       case 'greenGradient':
         return `linear-gradient(135deg, ${props.theme.colors.greenGradientStart}, ${props.theme.colors.greenGradientEnd})`;
         break;
+      case 'pinkGradient':
+        return `linear-gradient(135deg, ${props.theme.colors.pinkGradientStart}, ${props.theme.colors.pinkGradientEnd})`;
+        break;
       default:
         return `linear-gradient(135deg, ${props.theme.colors.themeDefault}, ${props.theme.colors.themeDefault})`;
     }
@@ -55,10 +58,13 @@ const SButton = styled.button`
     background-image: ${props => {
       switch(props.themeColor) {
         case 'blueGradient':
-          return 'linear-gradient(135deg, #764ba2, #667eea)';
+          return `linear-gradient(135deg, ${props.theme.colors.blueGradientEnd}, ${props.theme.colors.blueGradientStart})`;
           break;
         case 'greenGradient':
-          return 'linear-gradient(135deg, #3bb2b8, #90f7ec)';
+          return `linear-gradient(135deg, ${props.theme.colors.greenGradientEnd}, ${props.theme.colors.greenGradientStart})`;
+          break;
+        case 'pinkGradient':
+          return `linear-gradient(135deg, ${props.theme.colors.pinkGradientEnd}, ${props.theme.colors.pinkGradientStart})`;
           break;
         default:
           return `linear-gradient(135deg, ${props.theme.colors.themeDark}, ${props.theme.colors.themeDark})`;
