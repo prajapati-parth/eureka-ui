@@ -7,6 +7,8 @@ export default {
     blueGradientEnd: "#764BA2",
     greenGradientStart: "#90F7EC",
     greenGradientEnd: "#3BB2B8",
+    pinkGradientStart: "#F85D80",
+    pinkGradientEnd: "#717FF4",
     borderColor: "#E3E3E3"
   },
   button: {
