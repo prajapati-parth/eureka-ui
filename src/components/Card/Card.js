@@ -33,12 +33,17 @@ const propTypes = {
   /**
    * Card image
    */
-  img: PropTypes.string
+  img: PropTypes.string,
+  /**
+   * alt prop for image
+   */
+   alt: PropTypes.string,
 };
 
 const defaultProps = {
   borderNone: true,
-  categories: []
+  categories: [],
+  alt: '',
 };
 
 const SCard = styled.div`
@@ -129,13 +134,13 @@ const SCardPadder = styled.div`
 class Card extends React.Component {
   render() {
     const { title, children, click, theme, borderNone, categories, timeStamp,
-      showButton, buttonText, img } = this.props;
+      showButton, buttonText, img, alt } = this.props;
 
     return (
       <ThemeProvider theme={commonTheme}>
         <SCard themeColor={theme} onClick={click} borderNone={borderNone}>
           {
-            img && <SCardImg src={img} />
+            img && <SCardImg src={img} alt={alt} />
           }
           <SCardPadder>
             <SCardTitle>{title}</SCardTitle>
