@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { ThemeProvider, css } from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled, { ThemeProvider, css } from "styled-components";
 
-import commonTheme from '../../theme/eurekaui-theme';
-import Button from '../Button';
+import commonTheme from "../../theme/eurekaui-theme";
+import Button from "../Button";
 
 const propTypes = {
   /**
@@ -37,48 +37,52 @@ const propTypes = {
   /**
    * alt prop for image
    */
-   alt: PropTypes.string,
+  alt: PropTypes.string,
 };
 
 const defaultProps = {
   borderNone: true,
   categories: [],
-  alt: '',
+  alt: "",
 };
 
 const SCard = styled.div`
-  background-color: ${props => props.theme.colors.themeWhiteBase};
+  background-color: ${(props) => props.theme.colors.themeWhiteBase};
   border-radius: 5px;
-  transition: all .5s;
+  transition: all 0.5s;
   margin: 12px 0;
-  border: ${props => props.borderNone ? 'none' : `1px solid ${props.theme.colors.borderColor}`};
-  border-top: ${props => {
-    switch(props.themeColor) {
-      case 'blueGradient':
+  border: ${(props) =>
+    props.borderNone ? "none" : `1px solid ${props.theme.colors.borderColor}`};
+  border-top: ${(props) => {
+    switch (props.themeColor) {
+      case "blueGradient":
         return `8px solid ${props.theme.colors.blueGradientStart}`;
-      case 'greenGradient':
+      case "greenGradient":
         return `8px solid ${props.theme.colors.greenGradientStart}`;
-      case 'pinkGradient':
+      case "pinkGradient":
         return `8px solid ${props.theme.colors.pinkGradientStart}`;
     }
   }};
 
-  ${props => props.onClick && css`
-  &:hover {
-    cursor: pointer;
-    box-shadow: 0 4px 6px 0px hsla(0, 0%, 0%, 0.2);
-  }`}
+  ${(props) =>
+    props.onClick &&
+    css`
+      &:hover {
+        cursor: pointer;
+        box-shadow: 0 4px 6px 0px hsla(0, 0%, 0%, 0.2);
+      }
+    `}
 `;
 
 const SCardTitle = styled.div`
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
-  margin: 20px 0;
+  margin: 10px 0;
 `;
 
 const SCardBody = styled.div`
-  margin: 20px 0;
-  font-size: 20px;
+  margin: 10px 0;
+  font-size: 16px;
   color: #646464;
 
   > a {
@@ -98,18 +102,18 @@ const SCardCategory = styled.span`
   display: inline-block;
   padding: 0.25em 0.4em;
   font-size: 75%;
-  color: #FFFFFF;
+  color: #ffffff;
   border-radius: 0.25rem;
   text-align: center;
   font-weight: bold;
   margin-right: 3px;
-  background-color: ${props => {
-    switch(props.themeColor) {
-      case 'blueGradient':
+  background-color: ${(props) => {
+    switch (props.themeColor) {
+      case "blueGradient":
         return `${props.theme.colors.blueGradientEnd}`;
-      case 'greenGradient':
+      case "greenGradient":
         return `${props.theme.colors.greenGradientEnd}`;
-      case 'pinkGradient':
+      case "pinkGradient":
         return `${props.theme.colors.pinkGradientStart}`;
     }
   }};
@@ -117,7 +121,8 @@ const SCardCategory = styled.span`
 
 const SCardTimestamp = styled.span`
   margin: 10px 10px 5px 0;
-  color: #BFBFBF; 
+  color: #bfbfbf;
+  font-size: 14px;
 `;
 
 const SCardImg = styled.img`
@@ -127,36 +132,47 @@ const SCardImg = styled.img`
 `;
 
 const SCardPadder = styled.div`
-  padding: 15px 25px;
+  padding: 10px 15px;
 `;
 
 class Card extends React.Component {
   render() {
-    const { title, children, click, theme, borderNone, categories, timeStamp,
-      showButton, buttonText, img, alt } = this.props;
+    const {
+      title,
+      children,
+      click,
+      theme,
+      borderNone,
+      categories,
+      timeStamp,
+      showButton,
+      buttonText,
+      img,
+      alt,
+    } = this.props;
 
     return (
       <ThemeProvider theme={commonTheme}>
         <SCard themeColor={theme} onClick={click} borderNone={borderNone}>
-          {
-            img && <SCardImg src={img} alt={alt} />
-          }
+          {img && <SCardImg src={img} alt={alt} />}
           <SCardPadder>
-            <SCardTitle>{title}</SCardTitle>
-            {
-              timeStamp && <SCardTimestamp>{ timeStamp }</SCardTimestamp>
-            }
-            {
-              categories.map((category, idx) => <SCardCategory themeColor={theme} key={idx}>{category}</SCardCategory>)
-            }
+            {title && <SCardTitle>{title}</SCardTitle>}
+            {timeStamp && <SCardTimestamp>{timeStamp}</SCardTimestamp>}
+            {categories.map((category, idx) => (
+              <SCardCategory themeColor={theme} key={idx}>
+                {category}
+              </SCardCategory>
+            ))}
             <SCardBody>{children}</SCardBody>
-            {
-              showButton && (<SCardFooter><Button text={buttonText} theme={theme} click={click} /></SCardFooter>)
-            }
+            {showButton && (
+              <SCardFooter>
+                <Button text={buttonText} theme={theme} click={click} />
+              </SCardFooter>
+            )}
           </SCardPadder>
         </SCard>
       </ThemeProvider>
-    )
+    );
   }
 }
 

@@ -9,11 +9,11 @@ export default {
     greenGradientEnd: "#3BB2B8",
     pinkGradientStart: "#F85D80",
     pinkGradientEnd: "#717FF4",
-    borderColor: "#E3E3E3"
+    borderColor: "#E3E3E3",
   },
   button: {
-    paddingBaseVertical: "10px",
-    paddingBaseHorizontal: "34px",
-    borderRadius: "25px"
-  }
-}
+    paddingBaseVertical: "7px",
+    paddingBaseHorizontal: "24px",
+    borderRadius: "25px",
+  },
+};

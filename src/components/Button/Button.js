@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled, { ThemeProvider } from 'styled-components';
+import React from "react";
+import PropTypes from "prop-types";
+import styled, { ThemeProvider } from "styled-components";
 
-import commonTheme from '../../theme/eurekaui-theme';
+import commonTheme from "../../theme/eurekaui-theme";
 
 const propTypes = {
   /**
@@ -16,7 +16,7 @@ const propTypes = {
   /**
    * Click event handler
    */
-  click: PropTypes.func.isRequired
+  click: PropTypes.func.isRequired,
 };
 
 const SButton = styled.button`
@@ -29,41 +29,41 @@ const SButton = styled.button`
   background-image: none;
   border: none;
   white-space: nowrap;
-  margin: 0 2px;
-  padding: ${props => `${props.theme.button.paddingBaseVertical} ${props.theme.button.paddingBaseHorizontal}` };
-  background-image: ${props => {
-    switch(props.themeColor) {
-      case 'blueGradient':
+  padding: ${(props) =>
+    `${props.theme.button.paddingBaseVertical} ${props.theme.button.paddingBaseHorizontal}`};
+  background-image: ${(props) => {
+    switch (props.themeColor) {
+      case "blueGradient":
         return `linear-gradient(135deg, ${props.theme.colors.blueGradientStart}, ${props.theme.colors.blueGradientEnd})`;
         break;
-      case 'greenGradient':
+      case "greenGradient":
         return `linear-gradient(135deg, ${props.theme.colors.greenGradientStart}, ${props.theme.colors.greenGradientEnd})`;
         break;
-      case 'pinkGradient':
+      case "pinkGradient":
         return `linear-gradient(135deg, ${props.theme.colors.pinkGradientStart}, ${props.theme.colors.pinkGradientEnd})`;
         break;
       default:
         return `linear-gradient(135deg, ${props.theme.colors.themeDefault}, ${props.theme.colors.themeDefault})`;
     }
   }};
-  color: ${props => props.theme.colors.themeWhiteBase};
-  border-radius: ${props => props.theme.button.borderRadius};
-  font-size: 18px;
+  color: ${(props) => props.theme.colors.themeWhiteBase};
+  border-radius: ${(props) => props.theme.button.borderRadius};
+  font-size: 16px;
   font-family: inherit;
 
   &:focus,
   &:active,
   &:hover {
     outline: none;
-    background-image: ${props => {
-      switch(props.themeColor) {
-        case 'blueGradient':
+    background-image: ${(props) => {
+      switch (props.themeColor) {
+        case "blueGradient":
           return `linear-gradient(135deg, ${props.theme.colors.blueGradientEnd}, ${props.theme.colors.blueGradientStart})`;
           break;
-        case 'greenGradient':
+        case "greenGradient":
           return `linear-gradient(135deg, ${props.theme.colors.greenGradientEnd}, ${props.theme.colors.greenGradientStart})`;
           break;
-        case 'pinkGradient':
+        case "pinkGradient":
           return `linear-gradient(135deg, ${props.theme.colors.pinkGradientEnd}, ${props.theme.colors.pinkGradientStart})`;
           break;
         default:
@@ -84,9 +84,14 @@ class Button extends React.Component {
 
     return (
       <ThemeProvider theme={commonTheme}>
-        <SButton onClick={(event) => this.buttonClick(event)} themeColor={theme}>{text}</SButton>
+        <SButton
+          onClick={(event) => this.buttonClick(event)}
+          themeColor={theme}
+        >
+          {text}
+        </SButton>
       </ThemeProvider>
-    )
+    );
   }
 }
 
